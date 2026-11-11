@@ -1,0 +1,1046 @@
+[
+ {
+  "id": "SOUR.Test.EICAR",
+  "name": "Test.EICAR",
+  "score": 100,
+  "target": "any",
+  "en": "EICAR standard anti-malware test file (harmless)",
+  "ar": "ملف الاختبار القياسي EICAR (غير ضار)",
+  "mitre": "",
+  "strings": {
+   "a": [
+    "r:*H+H$!ELIF-TSET-SURIVITNA-DRADNATS-RACIE$}7)CC7)^P(45XZP\\4[PA@%P!O5X"
+   ]
+  },
+  "min": 0,
+  "max_kb": 1
+ },
+ {
+  "id": "SOUR.PS.DownloadExec",
+  "name": "PS.DownloadExec",
+  "score": 85,
+  "target": "script",
+  "en": "PowerShell download-and-execute cradle",
+  "ar": "سكربت PowerShell ينزّل شيفرة من الإنترنت وينفّذها مباشرة",
+  "mitre": "T1059.001",
+  "strings": {
+   "dl": [
+    "riw:(gnirtsdaolnwod",
+    "riw:(elifdaolnwod",
+    "riw:tseuqerbew-ekovni",
+    "riw:tneilcbew.ten",
+    "riw:refsnartstib-trats",
+    "riw:dohtemtser-ekovni",
+    "riw:(ataddaolnwod"
+   ],
+   "exec": [
+    "riw:noisserpxe-ekovni",
+    "riw:(xei",
+    "riw:( xei",
+    "riw:xei|",
+    "riw:xei |",
+    "riw:$ xei",
+    "riw: xei;"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.PS.EncodedCommand",
+  "name": "PS.EncodedCommand",
+  "score": 60,
+  "target": "any",
+  "en": "Launches PowerShell with an encoded (hidden) command",
+  "ar": "تشغيل PowerShell بأمر مرمَّز لإخفاء محتواه",
+  "mitre": "T1027",
+  "strings": {
+   "ps": [
+    "riw:llehsrewop",
+    "riw:hswp"
+   ],
+   "enc": [
+    "riw: cne- ",
+    "riw:dnammocdedocne-",
+    "riw:baj e- ",
+    "riw: ce- ",
+    "riw:(gnirts46esabmorf",
+    "riw:bqs e- ",
+    "riw:baj cne- "
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".ps1",
+   ".psm1",
+   ".bat",
+   ".cmd",
+   ".vbs",
+   ".vbe",
+   ".js",
+   ".jse",
+   ".wsf",
+   ".hta",
+   ".lnk"
+  ]
+ },
+ {
+  "id": "SOUR.PS.AmsiBypass",
+  "name": "PS.AmsiBypass",
+  "score": 90,
+  "target": "script",
+  "en": "Attempts to switch off the Antimalware Scan Interface (AMSI)",
+  "ar": "محاولة تعطيل واجهة فحص البرمجيات الخبيثة AMSI",
+  "mitre": "T1562.001",
+  "strings": {
+   "a": [
+    "riw:deliaftiniisma",
+    "riw:slituisma",
+    "riw:reffubnacsisma"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.NET.AmsiBypass",
+  "name": "NET.AmsiBypass",
+  "score": 70,
+  "target": "pe",
+  "en": "Binary carries AMSI-bypass markers",
+  "ar": "ملف تنفيذي يحمل علامات تجاوز AMSI",
+  "mitre": "T1562.001",
+  "strings": {
+   "a": [
+    "riw:deliaftiniisma"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Defender.Disable",
+  "name": "Defender.Disable",
+  "score": 85,
+  "target": "script",
+  "en": "Disables Microsoft Defender protections",
+  "ar": "تعطيل حمايات Microsoft Defender",
+  "mitre": "T1562.001",
+  "strings": {
+   "cmd": [
+    "riw:ecnereferppm-tes"
+   ],
+   "opt": [
+    "riw:gnirotinomemitlaerelbasid",
+    "riw:noitcetorpvaoielbasid",
+    "riw:gnirotinomroivahebelbasid",
+    "riw:gninnacstpircselbasid",
+    "riw:neestsriftakcolbelbasid"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.Defender.Exclusion",
+  "name": "Defender.Exclusion",
+  "score": 60,
+  "target": "script",
+  "en": "Adds an antivirus exclusion from a script",
+  "ar": "إضافة استثناء لمكافح الفيروسات من داخل سكربت",
+  "mitre": "T1562.001",
+  "strings": {
+   "cmd": [
+    "riw:ecnereferppm-dda"
+   ],
+   "opt": [
+    "riw:htapnoisulcxe-",
+    "riw:ssecorpnoisulcxe-",
+    "riw:noisnetxenoisulcxe-"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.Defender.RegistryKill",
+  "name": "Defender.RegistryKill",
+  "score": 35,
+  "target": "any",
+  "en": "Turns Defender off through policy registry values",
+  "ar": "إيقاف Defender عبر قيم سجل السياسات",
+  "mitre": "T1562.001",
+  "strings": {
+   "a": [
+    "riw:erawypsitnaelbasid"
+   ],
+   "b": [
+    "riw:rednefed swodniw"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Ransom.ShadowDelete",
+  "name": "Ransom.ShadowDelete",
+  "score": 75,
+  "target": "any",
+  "en": "Deletes Volume Shadow Copies / disables recovery (ransomware preparation)",
+  "ar": "حذف النسخ الظلية وتعطيل الاستعادة (تمهيد لهجوم فدية)",
+  "mitre": "T1490",
+  "strings": {
+   "a": [
+    "riw:swodahs eteled nimdassv",
+    "riw:swodahs eteled exe.nimdassv",
+    "riw:eteled ypocwodahs cimw",
+    "riw:golatac eteled nimdabw",
+    "riw:on delbaneyrevocer",
+    "riw:lla/ swodahs eteled",
+    "riw:eteled.)ypocwodahs_23niw"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Ransom.Note",
+  "name": "Ransom.Note",
+  "score": 70,
+  "target": "any",
+  "en": "Contains ransom-note wording",
+  "ar": "يحتوي عبارات رسالة فدية",
+  "mitre": "T1486",
+  "strings": {
+   "enc": [
+    "riw:detpyrcne neeb evah selif ruoy",
+    "riw:detpyrcne era selif ruoy lla",
+    "riw:detpyrcne neeb evah selif",
+    "riw:detpyrcne era selif ruoy fo lla",
+    "riw:detpyrcne era selif tnatropmi ruoy"
+   ],
+   "pay": [
+    "riw:nioctib",
+    "riw:noino.",
+    "riw:rotpyrced",
+    "riw:yek noitpyrced",
+    "riw:mosnar",
+    "riw:selif ruoy tpyrced"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Cred.Mimikatz",
+  "name": "Cred.Mimikatz",
+  "score": 95,
+  "target": "any",
+  "en": "Mimikatz credential-theft commands",
+  "ar": "أوامر أداة سرقة كلمات المرور Mimikatz",
+  "mitre": "T1003.001",
+  "strings": {
+   "a": [
+    "riw:::aslrukes",
+    "riw:::pmudasl",
+    "riw:ztakimim-ekovni",
+    "riw:nedlog::sorebrek",
+    "riw:gubed::egelivirp",
+    "riw:iwiklitneg"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Shell.ReverseTcp",
+  "name": "Shell.ReverseTcp",
+  "score": 85,
+  "target": "script",
+  "en": "PowerShell reverse shell over TCP",
+  "ar": "صدفة عكسية عبر TCP بلغة PowerShell",
+  "mitre": "T1059.001",
+  "strings": {
+   "tcp": [
+    "riw:tneilcpct.stekcos.ten"
+   ],
+   "st": [
+    "riw:)(maertsteg"
+   ],
+   "ex": [
+    "riw:noisserpxe-ekovni",
+    "riw:xei",
+    "riw:exe.dmc",
+    "riw:llehsrewop"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.Shell.Netcat",
+  "name": "Shell.Netcat",
+  "score": 70,
+  "target": "script",
+  "en": "Netcat / bash reverse-shell one-liner",
+  "ar": "أمر صدفة عكسية عبر netcat أو bash",
+  "mitre": "T1059",
+  "strings": {
+   "a": [
+    "riw: e- cn",
+    "riw:e- exe.cn",
+    "riw:e- tacn",
+    "riw:i- hs/nib/",
+    "riw:/pct/ved/ &> i- hsab"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.LOLBin.Download",
+  "name": "LOLBin.Download",
+  "score": 70,
+  "target": "any",
+  "en": "Uses a built-in Windows tool to fetch or run remote code",
+  "ar": "استغلال أداة نظام مدمجة لتنزيل أو تنفيذ شيفرة بعيدة",
+  "mitre": "T1218",
+  "strings": {
+   "a": [
+    "riw:ehcaclru- litutrec",
+    "riw:ehcaclru- exe.litutrec",
+    "riw:refsnart/ nimdastib",
+    "riw:ptth athsm",
+    "riw:ptth exe.athsm",
+    "riw:ptth:i/ u/ n/ s/ 23rvsger",
+    "riw::tpircsavaj 23lldnur",
+    "riw::tpircsbv athsm",
+    "riw::tpircsavaj athsm",
+    "riw::tpircsavaj exe.23lldnur"
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".ps1",
+   ".psm1",
+   ".bat",
+   ".cmd",
+   ".vbs",
+   ".vbe",
+   ".js",
+   ".jse",
+   ".wsf",
+   ".hta",
+   ".lnk"
+  ]
+ },
+ {
+  "id": "SOUR.VBS.Dropper",
+  "name": "VBS.Dropper",
+  "score": 70,
+  "target": "script",
+  "en": "Script downloads a file and runs it (WScript dropper)",
+  "ar": "سكربت ينزّل ملفاً ثم يشغّله (Dropper)",
+  "mitre": "T1059.005",
+  "strings": {
+   "sh": [
+    "riw:llehs.tpircsw",
+    "riw:noitacilppa.llehs"
+   ],
+   "net": [
+    "riw:ptthlmx.2lmxsm",
+    "riw:ptthlmxrevres.2lmxsm",
+    "riw:tseuqerptthniw.ptthniw",
+    "riw:maerts.bdoda"
+   ],
+   "run": [
+    "riw:nur.",
+    "riw:etucexellehs",
+    "riw:(cexe."
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.Macro.AutoExec",
+  "name": "Macro.AutoExec",
+  "score": 65,
+  "target": "any",
+  "en": "Office macro that runs commands when the document opens",
+  "ar": "ماكرو أوفيس ينفّذ أوامر تلقائياً عند فتح المستند",
+  "mitre": "T1204.002",
+  "strings": {
+   "auto": [
+    "riw:nepootua",
+    "riw:nepo_tnemucod",
+    "riw:nepo_koobkrow",
+    "riw:nepo_otua"
+   ],
+   "act": [
+    "riw:(llehs",
+    "riw:(tcejboetaerc",
+    "riw:llehs.tpircsw",
+    "riw:llehsrewop"
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".doc",
+   ".xls",
+   ".docm",
+   ".xlsm",
+   ".bin",
+   ".dotm",
+   ".ppt",
+   ".pptm",
+   ".xlam",
+   ".bas"
+  ]
+ },
+ {
+  "id": "SOUR.Batch.HiddenRunKey",
+  "name": "Batch.HiddenRunKey",
+  "score": 55,
+  "target": "script",
+  "en": "Adds itself to startup and hides its file",
+  "ar": "يضيف نفسه لبدء التشغيل ويخفي ملفه",
+  "mitre": "T1547.001",
+  "strings": {
+   "run": [
+    "riw:nur\\noisrevtnerruc\\"
+   ],
+   "hide": [
+    "riw:h+ birtta",
+    "riw:h+ s+ birtta",
+    "riw:s+ birtta"
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".bat",
+   ".cmd"
+  ]
+ },
+ {
+  "id": "SOUR.Fw.Disable",
+  "name": "Fw.Disable",
+  "score": 70,
+  "target": "any",
+  "en": "Switches Windows Firewall off",
+  "ar": "إيقاف جدار حماية ويندوز",
+  "mitre": "T1562.004",
+  "strings": {
+   "a": [
+    "riw:ffo etats seliforplla tes llawerifvda hsten",
+    "riw:elbasid edompo tes llawerif hsten",
+    "riw:eslaf delbane- eliforpllaweriften-tes"
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".ps1",
+   ".psm1",
+   ".bat",
+   ".cmd",
+   ".vbs",
+   ".vbe",
+   ".js",
+   ".jse",
+   ".wsf",
+   ".hta",
+   ".lnk"
+  ]
+ },
+ {
+  "id": "SOUR.Account.AddAdmin",
+  "name": "Account.AddAdmin",
+  "score": 60,
+  "target": "script",
+  "en": "Creates a user and adds it to Administrators",
+  "ar": "إنشاء مستخدم وإضافته لمجموعة المدراء",
+  "mitre": "T1136.001",
+  "strings": {
+   "a": [
+    "riw: resu ten"
+   ],
+   "b": [
+    "riw:dda/ "
+   ],
+   "c": [
+    "riw:srotartsinimda puorglacol"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.Log.Clear",
+  "name": "Log.Clear",
+  "score": 60,
+  "target": "script",
+  "en": "Clears Windows event logs",
+  "ar": "مسح سجلات أحداث ويندوز",
+  "mitre": "T1070.001",
+  "strings": {
+   "a": [
+    "riw: lc litutvew",
+    "riw:goltneve-raelc",
+    "riw: lc exe.litutvew"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.C2.CobaltStrike",
+  "name": "C2.CobaltStrike",
+  "score": 90,
+  "target": "pe",
+  "en": "Cobalt Strike beacon markers",
+  "ar": "علامات منارة Cobalt Strike",
+  "mitre": "S0154",
+  "strings": {
+   "rl": [
+    "riw:redaolevitcelfer"
+   ],
+   "bc": [
+    "riw:lld.nocaeb",
+    "riw:lld.46x.nocaeb",
+    "riw:d% :s%\\s% sa s%",
+    "riw:)nekot( s% nwaps ton dluoc"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.C2.Meterpreter",
+  "name": "C2.Meterpreter",
+  "score": 90,
+  "target": "pe",
+  "en": "Metasploit Meterpreter payload markers",
+  "ar": "علامات حمولة Meterpreter",
+  "mitre": "S0002",
+  "strings": {
+   "a": [
+    "riw:lld.vrstem",
+    "riw:lld.46x.vrstem",
+    "riw:ipadts_revres_txe"
+   ],
+   "b": [
+    "riw:redaolevitcelfer",
+    "riw:nepo_lennahc_eroc",
+    "riw:_ipadts"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Miner.Generic",
+  "name": "Miner.Generic",
+  "score": 80,
+  "target": "any",
+  "en": "Cryptocurrency miner configuration",
+  "ar": "إعدادات برنامج تعدين عملات رقمية",
+  "mitre": "T1496",
+  "strings": {
+   "st": [
+    "riw://:pct+mutarts",
+    "riw://:lss+mutarts"
+   ],
+   "x": [
+    "riw:girmx"
+   ],
+   "cn": [
+    "riw:thginotpyrc",
+    "riw:xmodnar"
+   ],
+   "dl": [
+    "riw:level-etanod"
+   ],
+   "pool": [
+    "riw:rmxenim.loop",
+    "riw:gro.looponan",
+    "riw:moc.rmxtroppus",
+    "riw:naecoorenom"
+   ]
+  },
+  "min": 2,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Spy.Keylogger",
+  "name": "Spy.Keylogger",
+  "score": 60,
+  "target": "pe",
+  "en": "Keystroke-logging capability",
+  "ar": "قدرة على تسجيل ضربات المفاتيح",
+  "mitre": "T1056.001",
+  "strings": {
+   "k1": [
+    "riw:]retne["
+   ],
+   "k2": [
+    "riw:]ecapskcab[",
+    "riw:]kcab["
+   ],
+   "k3": [
+    "riw:]kcolspac[",
+    "riw:]kcol spac["
+   ],
+   "k4": [
+    "riw:]bat["
+   ]
+  },
+  "min": 3,
+  "unsigned_only": true,
+  "imports_all": [
+   "GetAsyncKeyState",
+   "SetWindowsHookEx"
+  ]
+ },
+ {
+  "id": "SOUR.Stealer.Generic",
+  "name": "Stealer.Generic",
+  "score": 80,
+  "target": "any",
+  "en": "Targets saved browser passwords, wallets or messenger sessions",
+  "ar": "يستهدف كلمات مرور المتصفحات والمحافظ وجلسات المراسلة",
+  "mitre": "T1555.003",
+  "strings": {
+   "chrome": [
+    "riw:atad resu\\emorhc\\elgoog\\"
+   ],
+   "login": [
+    "riw:atad nigol"
+   ],
+   "ff": [
+    "riw:seliforp\\xoferif\\allizom\\",
+    "riw:nosj.snigol"
+   ],
+   "wal": [
+    "riw:tad.tellaw",
+    "riw:\\sudoxe\\",
+    "riw:stellaw\\murtcele\\"
+   ],
+   "tg": [
+    "riw:atadt\\potksed margelet"
+   ],
+   "dc": [
+    "riw:bdlevel\\egarots lacol\\drocsid",
+    "riw:yranacdrocsid"
+   ]
+  },
+  "min": 3,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.RAT.Family",
+  "name": "RAT.Family",
+  "score": 85,
+  "target": "any",
+  "en": "Name of a known remote-access trojan family",
+  "ar": "اسم عائلة معروفة من أحصنة التحكم عن بعد",
+  "mitre": "T1219",
+  "strings": {
+   "a": [
+    "rw:TARcnysA",
+    "rw:TARrasauQ",
+    "rw:tneilC.rasauQ",
+    "rw:taRcD",
+    "rw:TARjn",
+    "rw:tneilC eroConaN",
+    "rw:V mroWX",
+    "rw:TARmoneV",
+    "rw:teN.ytiruceS-gnikaerB"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Inject.Hollowing",
+  "name": "Inject.Hollowing",
+  "score": 35,
+  "target": "pe",
+  "en": "Process-hollowing API set",
+  "ar": "مجموعة دوال تفريغ العمليات (Process Hollowing)",
+  "mitre": "T1055.012",
+  "strings": {},
+  "min": 0,
+  "unsigned_only": true,
+  "imports_all": [
+   "NtUnmapViewOfSection",
+   "WriteProcessMemory",
+   "SetThreadContext",
+   "ResumeThread"
+  ]
+ },
+ {
+  "id": "SOUR.Inject.RemoteThread",
+  "name": "Inject.RemoteThread",
+  "score": 30,
+  "target": "pe",
+  "en": "Classic remote-thread code injection API set",
+  "ar": "مجموعة دوال حقن الشيفرة في عملية أخرى",
+  "mitre": "T1055.002",
+  "strings": {},
+  "min": 0,
+  "unsigned_only": true,
+  "imports_all": [
+   "VirtualAllocEx",
+   "WriteProcessMemory",
+   "CreateRemoteThread"
+  ]
+ },
+ {
+  "id": "SOUR.Evasion.AntiVm",
+  "name": "Evasion.AntiVm",
+  "score": 50,
+  "target": "any",
+  "en": "Checks for virtual machines, sandboxes or analysis tools",
+  "ar": "يتحقق من الأجهزة الوهمية وأدوات التحليل",
+  "mitre": "T1497",
+  "strings": {
+   "vbox": [
+    "riw:ecivresxobv",
+    "riw:tseugxobv",
+    "riw:koohxobv"
+   ],
+   "vmw": [
+    "riw:dslootmv",
+    "riw:resuerawmv",
+    "riw:sloot erawmv"
+   ],
+   "sb": [
+    "riw:lld.lldeibs"
+   ],
+   "dbg": [
+    "riw:gbdyllo",
+    "riw:gbd46x",
+    "riw:rekcahssecorp"
+   ],
+   "ws": [
+    "riw:krahseriw",
+    "riw:relddif",
+    "riw:nomcorp"
+   ]
+  },
+  "min": 3,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.UAC.Bypass",
+  "name": "UAC.Bypass",
+  "score": 80,
+  "target": "any",
+  "en": "Known UAC-bypass registry hijack",
+  "ar": "اختطاف سجل معروف لتجاوز UAC",
+  "mitre": "T1548.002",
+  "strings": {
+   "reg": [
+    "riw:dnammoc\\nepo\\llehs\\sgnittes-sm",
+    "riw:dnammoc\\nepo\\llehs\\elifcsm"
+   ],
+   "bin": [
+    "riw:replehdof",
+    "riw:rwvtneve",
+    "riw:stluafedretupmoc",
+    "riw:tlcds"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Exfil.TelegramBot",
+  "name": "Exfil.TelegramBot",
+  "score": 60,
+  "target": "any",
+  "en": "Sends data through a Telegram bot",
+  "ar": "يرسل بيانات عبر بوت تيليغرام",
+  "mitre": "T1567",
+  "strings": {
+   "a": [
+    "riw:tob/gro.margelet.ipa"
+   ],
+   "b": [
+    "riw:tnemucoddnes",
+    "riw:egassemdnes"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Exfil.DiscordWebhook",
+  "name": "Exfil.DiscordWebhook",
+  "score": 55,
+  "target": "any",
+  "en": "Sends data to a Discord webhook",
+  "ar": "يرسل بيانات إلى Webhook على ديسكورد",
+  "mitre": "T1567",
+  "strings": {
+   "a": [
+    "riw:skoohbew/ipa/moc.drocsid",
+    "riw:skoohbew/ipa/moc.ppadrocsid"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.Webshell.PHP",
+  "name": "Webshell.PHP",
+  "score": 90,
+  "target": "any",
+  "en": "PHP web shell",
+  "ar": "صدفة ويب PHP",
+  "mitre": "T1505.003",
+  "strings": {
+   "a": [
+    "ri:tsop_$(lave",
+    "ri:teg_$(lave",
+    "ri:tseuqer_$(lave",
+    "ri:tsop_$(tressa",
+    "ri:(edoced_46esab(lave",
+    "ri:teg_$(metsys",
+    "ri:tsop_$(metsys",
+    "ri:_$(urhtssap",
+    "ri:_$(cexe_llehs"
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".php",
+   ".phtml",
+   ".php3",
+   ".php5",
+   ".inc"
+  ]
+ },
+ {
+  "id": "SOUR.Webshell.ASP",
+  "name": "Webshell.ASP",
+  "score": 85,
+  "target": "any",
+  "en": "ASP/ASPX web shell",
+  "ar": "صدفة ويب ASP",
+  "mitre": "T1505.003",
+  "strings": {
+   "e": [
+    "ri:tseuqer(lave",
+    "ri:tseuqer(etucexe",
+    "ri:tseuqer( lave"
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".asp",
+   ".aspx",
+   ".ashx",
+   ".asa"
+  ]
+ },
+ {
+  "id": "SOUR.Webshell.ASPCmd",
+  "name": "Webshell.ASPCmd",
+  "score": 75,
+  "target": "any",
+  "en": "ASPX page that runs commands from the request",
+  "ar": "صفحة ASPX تنفّذ أوامر قادمة من الطلب",
+  "mitre": "T1505.003",
+  "strings": {
+   "cmd": [
+    "ri:exe.dmc"
+   ],
+   "req": [
+    "ri:gnirtsyreuq.tseuqer",
+    "ri:mrof.tseuqer",
+    "ri:[tseuqer"
+   ],
+   "run": [
+    "ri:trats.ssecorp",
+    "ri:ofnitratsssecorp"
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".asp",
+   ".aspx",
+   ".ashx"
+  ]
+ },
+ {
+  "id": "SOUR.HackTool.Offensive",
+  "name": "HackTool.Offensive",
+  "score": 70,
+  "target": "any",
+  "en": "Offensive security tool name",
+  "ar": "اسم أداة هجومية معروفة",
+  "mitre": "T1588.002",
+  "strings": {
+   "a": [
+    "rw:suebuR",
+    "rw:dnuoHprahS",
+    "rw:sdnammoC.tlebtaeS",
+    "rw:engaZaL",
+    "rw:ztaKytefaS",
+    "rw:tiolpSrewoP",
+    "rw:tsaorebreK-ekovnI",
+    "rw:noitcejnIEPevitcelfeR-ekovnI",
+    "rw:edocllehS-ekovnI",
+    "rw:noitalupinaMnekoT-ekovnI"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true
+ },
+ {
+  "id": "SOUR.USB.Autorun",
+  "name": "USB.Autorun",
+  "score": 60,
+  "target": "any",
+  "en": "autorun.inf that launches a program",
+  "ar": "ملف autorun.inf يشغّل برنامجاً تلقائياً",
+  "mitre": "T1091",
+  "strings": {
+   "a": [
+    "riw:]nurotua["
+   ],
+   "b": [
+    "riw:=nepo",
+    "riw:=etucexellehs",
+    "riw:=dnammoc\\nepo\\llehs"
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".inf"
+  ],
+  "max_kb": 64
+ },
+ {
+  "id": "SOUR.LNK.Suspicious",
+  "name": "LNK.Suspicious",
+  "score": 65,
+  "target": "lnk",
+  "en": "Shortcut that runs a script interpreter with download/hidden arguments",
+  "ar": "اختصار يشغّل مفسّر أوامر مع وسائط تنزيل أو إخفاء",
+  "mitre": "T1204.002",
+  "strings": {
+   "bin": [
+    "riw:llehsrewop",
+    "riw:c/ exe.dmc",
+    "riw:c/ dmc",
+    "riw:athsm",
+    "riw:tpircsw",
+    "riw:tpircsc",
+    "riw:23lldnur",
+    "riw:23rvsger",
+    "riw:litutrec",
+    "riw:nimdastib"
+   ],
+   "arg": [
+    "riw://:ptth",
+    "riw://:sptth",
+    "riw:cne- ",
+    "riw:neddih w-",
+    "riw:neddih elytswodniw-",
+    "riw:gnirts46esabmorf",
+    "riw:%pmet%",
+    "riw:%atadppa%",
+    "riw:gnirtsdaolnwod"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.Script.HiddenBypass",
+  "name": "Script.HiddenBypass",
+  "score": 45,
+  "target": "script",
+  "en": "Runs PowerShell hidden with the execution policy bypassed",
+  "ar": "تشغيل PowerShell مخفياً مع تجاوز سياسة التنفيذ",
+  "mitre": "T1059.001",
+  "strings": {
+   "a": [
+    "riw:neddih elytswodniw-",
+    "riw:neddih w-",
+    "riw:neddih niw-"
+   ],
+   "b": [
+    "riw:ssapyb ycilopnoitucexe-",
+    "riw:ssapyb pe-",
+    "riw:ssapyb cexe-"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.Persist.SchTask",
+  "name": "Persist.SchTask",
+  "score": 45,
+  "target": "script",
+  "en": "Creates a scheduled task for persistence",
+  "ar": "إنشاء مهمة مجدولة للبقاء في النظام",
+  "mitre": "T1053.005",
+  "strings": {
+   "a": [
+    "riw:etaerc/ sksathcs",
+    "riw:etaerc/ exe.sksathcs"
+   ],
+   "b": [
+    "riw:nogolno cs/",
+    "riw:etunim cs/",
+    "riw:metsys ur/",
+    "riw:tsehgih lr/",
+    "riw:tratsno cs/"
+   ]
+  },
+  "min": 0
+ },
+ {
+  "id": "SOUR.JS.Dropper",
+  "name": "JS.Dropper",
+  "score": 70,
+  "target": "script",
+  "en": "JScript downloader/dropper",
+  "ar": "سكربت JScript ينزّل ملفاً ويشغّله",
+  "mitre": "T1059.007",
+  "strings": {
+   "a": [
+    "riw:tcejboxevitca"
+   ],
+   "b": [
+    "riw:llehs.tpircsw",
+    "riw:noitacilppa.llehs"
+   ],
+   "c": [
+    "riw:ptthlmx.2lmxsm",
+    "riw:maerts.bdoda",
+    "riw:tseuqerptthniw.ptthniw"
+   ]
+  },
+  "min": 0,
+  "ext": [
+   ".js",
+   ".jse",
+   ".wsf",
+   ".hta"
+  ]
+ },
+ {
+  "id": "SOUR.Wiper.RawDisk",
+  "name": "Wiper.RawDisk",
+  "score": 30,
+  "target": "pe",
+  "en": "Writes directly to the physical disk",
+  "ar": "يكتب مباشرة على القرص الفيزيائي",
+  "mitre": "T1561",
+  "strings": {
+   "a": [
+    "riw:evirdlacisyhp\\.\\\\"
+   ]
+  },
+  "min": 0,
+  "unsigned_only": true,
+  "imports_all": [
+   "DeviceIoControl",
+   "WriteFile"
+  ]
+ }
+]

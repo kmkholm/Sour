@@ -1,0 +1,19 @@
+bin/
+bin_new/
+obj/
+src/Sour/bin/
+src/Sour/obj/
+.vs/
+*.user
+ml/data/
+__pycache__/
+ml/out/
+docs/results/
+docs/selftest_report.txt
+# screenshots that show this PC's network, startup items or devices stay local
+docs/shots/*
+!docs/shots/*_01_overview.png
+!docs/shots/*_02_firewall.png
+!docs/shots/*_04_antivirus.png
+!docs/shots/*_06_ai.png
+src/Sour/Assets/sour_256.png

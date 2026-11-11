@@ -1,0 +1,203 @@
+{
+ "name": "Sour static PE detector",
+ "algorithm": "LightGBM gradient-boosted trees",
+ "trained": "2026-11-11",
+ "n_features": 193,
+ "n_trees": 1500,
+ "dataset": "EMBER2024 raw features (Win32, Win64, Dot_Net)",
+ "sampling": "first 2500 labelled PE records of every weekly file (cap stated, not the full corpus)",
+ "n_train": 360000,
+ "n_val": 30000,
+ "n_test": 90000,
+ "train_weeks": [
+  "2023-09-24_2023-09-30",
+  "2024-08-18_2024-08-24"
+ ],
+ "val_weeks": [
+  "2024-08-25_2024-08-31",
+  "2024-09-01_2024-09-07",
+  "2024-09-08_2024-09-14",
+  "2024-09-15_2024-09-21"
+ ],
+ "test_weeks": [
+  "2024-09-22_2024-09-28",
+  "2024-12-08_2024-12-14"
+ ],
+ "val_auc": 0.9964727245144266,
+ "test_auc": 0.9966812573847397,
+ "threshold_malicious": 0.969620174147326,
+ "threshold_suspicious": 0.7888479645911758,
+ "threshold_rule": "malicious = 0.1% FPR on validation; suspicious = 1% FPR on validation",
+ "test_at_malicious": {
+  "threshold": 0.969620174147326,
+  "tpr": 0.8516838702950683,
+  "fpr": 0.0017623363544813696,
+  "tp": 32674,
+  "fp": 91
+ },
+ "test_at_suspicious": {
+  "threshold": 0.7888479645911758,
+  "tpr": 0.9400218955270566,
+  "fpr": 0.009508869780773104,
+  "tp": 36063,
+  "fp": 491
+ },
+ "per_type": {
+  "Dot_Net": {
+   "n": 30000,
+   "auc": 0.9959944902589705,
+   "malicious": {
+    "threshold": 0.969620174147326,
+    "tpr": 0.8431984795004073,
+    "fpr": 0.0034058160859313596,
+    "tp": 12422,
+    "fp": 52
+   },
+   "suspicious": {
+    "threshold": 0.7888479645911758,
+    "tpr": 0.9498370893293511,
+    "fpr": 0.018862981399004455,
+    "tp": 13993,
+    "fp": 288
+   }
+  },
+  "Win32": {
+   "n": 30000,
+   "auc": 0.9958582714542435,
+   "malicious": {
+    "threshold": 0.969620174147326,
+    "tpr": 0.8216858237547893,
+    "fpr": 0.0010029498525073745,
+    "tp": 10723,
+    "fp": 17
+   },
+   "suspicious": {
+    "threshold": 0.7888479645911758,
+    "tpr": 0.9162452107279694,
+    "fpr": 0.0071976401179941005,
+    "tp": 11957,
+    "fp": 122
+   }
+  },
+  "Win64": {
+   "n": 30000,
+   "auc": 0.9977930884563906,
+   "malicious": {
+    "threshold": 0.969620174147326,
+    "tpr": 0.9004914004914005,
+    "fpr": 0.0011329694098259346,
+    "tp": 9529,
+    "fp": 22
+   },
+   "suspicious": {
+    "threshold": 0.7888479645911758,
+    "tpr": 0.9556794556794557,
+    "fpr": 0.004171387372540941,
+    "tp": 10113,
+    "fp": 81
+   }
+  }
+ },
+ "top_features": [
+  {
+   "name": "coff_DLL",
+   "gain": 0.3045816569171822
+  },
+  {
+   "name": "dd_SECURITY_log",
+   "gain": 0.11194504822402028
+  },
+  {
+   "name": "sec_max_entropy",
+   "gain": 0.052942275747969864
+  },
+  {
+   "name": "imp_n_func_log",
+   "gain": 0.034012951327342604
+  },
+  {
+   "name": "str_avlen",
+   "gain": 0.02514786078614664
+  },
+  {
+   "name": "sec_wx",
+   "gain": 0.023893647882264644
+  },
+  {
+   "name": "dd_RESOURCE_log",
+   "gain": 0.02246889495464925
+  },
+  {
+   "name": "overlay_entropy",
+   "gain": 0.021884351367415237
+  },
+  {
+   "name": "str_entropy",
+   "gain": 0.020521333903995857
+  },
+  {
+   "name": "opt_image_base_log",
+   "gain": 0.018673287001748997
+  },
+  {
+   "name": "overlay_size_log",
+   "gain": 0.015433946026244587
+  },
+  {
+   "name": "checksum_zero",
+   "gain": 0.01505953883948182
+  },
+  {
+   "name": "dd_EXPORT_log",
+   "gain": 0.014813244640802914
+  },
+  {
+   "name": "coff_timestamp",
+   "gain": 0.014797940729003907
+  },
+  {
+   "name": "dd_DEBUG_log",
+   "gain": 0.014596850788806123
+  },
+  {
+   "name": "hist16_9",
+   "gain": 0.011826544680882877
+  },
+  {
+   "name": "api__CorExeMain",
+   "gain": 0.011692183955931799
+  },
+  {
+   "name": "exp_n_log",
+   "gain": 0.010187046129914668
+  },
+  {
+   "name": "n_rvas",
+   "gain": 0.00856866545729786
+  },
+  {
+   "name": "dd_BASERELOC_log",
+   "gain": 0.00817988022486324
+  },
+  {
+   "name": "sec_max_vratio_log",
+   "gain": 0.008138060245149138
+  },
+  {
+   "name": "opt_sizeof_code_log",
+   "gain": 0.007280209302171685
+  },
+  {
+   "name": "sec_raw_frac",
+   "gain": 0.006379007781925085
+  },
+  {
+   "name": "opt_sizeof_initialized_data_log",
+   "gain": 0.005523220417478567
+  },
+  {
+   "name": "sec_mean_entropy",
+   "gain": 0.0054954302042035195
+  }
+ ]
+}
